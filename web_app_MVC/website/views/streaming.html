@@ -1,0 +1,88 @@
+<!--lw doppie parentesi graffe servono per scrivere codice python-->
+{% extends "base.html" %}{% block title %}Video{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8  offset-lg-2">
+        <h3>Sessione Live</h3>
+        {% if flag == 1%}
+
+            <img src="{{ url_for('videoStreaming.define_free_videoStreaming')}}" width="100%">
+            <br>
+            <p id="prob">Default Value</p>
+            <fieldset >
+                <legend class ='text-center' >Correzioni</legend>
+            <p id="corr">Default Value</p>
+            </fieldset>
+            <script>
+                
+                function renderProb() {
+                    const elementClassif = document.getElementById("prob")
+                   // elementClassif.innerHTML = "Refreshing..."
+                      fetch("{{ url_for('videoStreaming.render_prob') }}")
+                      .then(response => response.json())
+                      .then(json => elementClassif.innerHTML = json.prob)
+                      .catch(error => console.error(error))
+                }
+                document.addEventListener("DOMContentLoaded", function(event) {
+                    setInterval(renderProb, 1000) // interval value in milliseconds
+                })
+                function renderCorrection() {
+                    const elementCorr = document.getElementById("corr")
+                    //elementCorr.innerHTML = "Refreshing..."
+                      fetch("{{ url_for('videoStreaming.render_correction') }}")
+                      .then(response => response.json())
+                      .then(json => elementCorr.innerHTML = json.correction)
+                      .catch(error => console.error(error))
+                }
+                document.addEventListener("DOMContentLoaded", function(event) {
+                    setInterval(renderCorrection, 1000) // interval value in milliseconds
+                })
+            </script>
+            
+        {% else %}
+            <img src="{{ url_for('videoStreaming.define_routine_videoStreaming', exercises_list = exercises_list)}}" width="100%">
+            <br>
+            <br>
+            <fieldset>
+                <legend class ='text-center'>Correzioni</legend>
+                    <p id="corr">Default Value</p>
+            </fieldset>
+            <div id="countdown">
+                <div id="timer"></div>
+                <svg>
+                  <circle r="70" cx="75" cy="75"></circle>
+                </svg>
+              </div>
+            <script>
+                function renderCorrection() {
+                    const elementCorr = document.getElementById("corr")
+                    //elementCorr.innerHTML = "Refreshing..."
+                      fetch("{{ url_for('videoStreaming.render_correction') }}")
+                      .then(response => response.json())
+                      .then(json => elementCorr.innerHTML = json.correction)
+                      .catch(error => console.error(error))
+                }
+                document.addEventListener("DOMContentLoaded", function(event) {
+                    setInterval(renderCorrection, 1000) // interval value in milliseconds
+                  })
+                function renderTimer() {
+                    const elementTimer = document.getElementById("timer")
+                        fetch("{{ url_for('videoStreaming.render_timer') }}")
+                        .then(response => response.json())
+                        .then(json => elementTimer.textContent = json.timer)
+                        .catch(error => console.error(error))
+                }
+                document.addEventListener("DOMContentLoaded", function(event) {
+                    setInterval(renderTimer, 1000) // interval value in milliseconds
+                    })
+        </script>
+        
+            {% endif %}
+    </div>
+</div>
+
+
+
+{% endblock %}

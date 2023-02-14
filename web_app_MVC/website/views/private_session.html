@@ -1,0 +1,38 @@
+{% extends "base.html" %} 
+
+{% block title %}Home{% endblock %} 
+
+{% block content%}
+<div class="container-fluid">
+    <h1 align="center">Sessione Privata</h1>
+    <br>
+    <h4 align="center">Scegli se avviare una sessione libera di yoga oppure decidi se costruire prima una routine!</h4>
+    <div class="row">
+      <div class="col-sm-5" >
+        <br>
+        <br>
+        <p>Decidendo di creare una routine avra la possibilità di creare una routine di esercizi da eseguire.
+            Avrai 6 posizioni tra cui scliegliere ed ogni posa verrà eseguita per 30 secondi</p>
+        <a href="/create-routine" class="btn btn-dark btn-lg btn-block" role="button" aria-pressed="true">Crea routine</a>
+     </div>
+      <div class="col-sm-7" >
+        <img src="../static/img/routine.png"
+        class="img-fluid" alt="Responsive image">
+      </div>
+
+      <div class="col-sm-5" >
+         <img src="../static/img/routinestart.png"
+            class="img-fluid" alt="Responsive image">
+     </div>
+      <div class="col-sm-7" >
+        <br>
+        <p>Decidendo di iniziare una sessione di yoga libera potrai esguire le pose che preferisci.
+            Non preoccuparti anche in questa modalità verrai aiutato e corretto nell'esecuzione
+        </p>
+        <a href="/free-video" class="btn btn-dark btn-lg btn-block" role="button" aria-pressed="true">Inizia la sessione</a>
+      </div>
+    </div>
+  </div>
+<br>
+   
+{% endblock %}

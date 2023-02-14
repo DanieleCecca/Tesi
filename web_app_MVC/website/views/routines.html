@@ -1,0 +1,75 @@
+{% extends "base.html" %} {% block title %}Routine{% endblock %}
+ {% block content %}
+    <h1 align="center">Definisci la tua routine</h1>    
+    <form method="POST">
+      <select name="exercise" id="exercise" class="form-control" >
+        {% for yoga_pose in yoga_poses %}
+            <option value="{{ yoga_pose.id }}">{{ yoga_pose.name }}</option>
+        {% endfor %}
+        <br />
+      </select>
+      <div align="center">
+        <br>
+        <button type="submit" class="btn btn-secondary">Aggiungi esercizio</button>
+      </div>
+    </form>
+    <ul class="list-group list-group-flush" id="exercises_list">
+      <br>
+      {% for exercise_name, exercise in zip(exercises_list_name,exercises_list) %}
+      <li class="list-group-item">
+        {{ exercise_name.name }}
+        {{ exercise.id }}
+        <button type="button" class="close" onClick="delete_exercise({{ exercise.id }})">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </li>
+      {% endfor %}
+      <br>
+    </ul>
+
+    <a href="/routine-video" class="btn btn-dark btn-lg" role="button" aria-pressed="true">Inizia la sessione</a>
+    <br>
+    <br>
+
+    <div class="card-deck">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="../static/img/Cobra.png" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Cobra</h4>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="../static/img/Corpse.png" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Corpse</h4>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="../static/img/Lotus.png" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Lotus</h4>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="../static/img/Mountain.png" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Mountain</h4>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="../static/img/Tree.png" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Tree</h4>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="../static/img/Triangle.png" alt="Card image cap" >
+        <div class="card-body">
+          <h4 class="card-title">Triangle</h4>
+        </div>
+      </div>
+    </div>
+
+    
+
+    {% endblock %}

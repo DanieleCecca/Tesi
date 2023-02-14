@@ -1,0 +1,76 @@
+# DOCUMENTAZIONE
+
+### Note
+
+- Dare la possibilità di aggiungere nuovi esercizi come visto dal video
+
+- Farlo per il multipose
+
+- Forse nel momento se un punto non è visualizzato bisognerebbe sommare un vettore pari a 0
+
+- Ho trovato una incongruenza nella documentazione di Mvenet tra la card e l'overview generale; uno dice di trasformare l'immagine di input in un tensor float , l'altro no.
+
+
+## Il Dataset
+
+Il dataset utilizzato (andare a trovare il paper da cui è stato preso) si compone di 88 video in cui vengono eseguite 6 pose :
+
+- Cobra (Bhuj)
+- Tree (Vriksh)
+- Mountain (Tada)
+- Lotus (Padam)
+- Triangle (Trik)
+- Corpse (Shav)
+
+I video sono ripartiti nelle diverse pose non in maniera univoca ma abbiamo:
+
+- Cobra == 16 video
+- Tree == 15 video
+- Mountain == 15 video
+- Lotus == 14 video
+- Triangle == 13 video
+- Corpse == 15 video
+
+I video sono stati ripartiti in maniera manuale nelle diverse cartelle con il rispettivo nome degli esercizi per facilitare la classificazione
+
+Essendo 88 video e rifacendomi alla ripartizione standar avremo nella divisione del dataset in training set validation set e test set una proporzione pari a 80 20 20;
+Quindi nel nostro caso avremo:
+
+88:100=x:20 ==> x =17.6
+
+Training = 52
+Validation = 18
+Test = 18
+
+# Estrazione delle Features
+
+Utilizzeremo come modello per l'extraction features, dove le features sono i vari joint ossia le articolazioni(forse dovremo estrarre anche gli angoli),MoveNet.
+In particolare in questa demo sto utlizzando la versione TFLite (movenet/singlepose/lightning).
+
+INPUT
+
+Come suggerisce la doc le immagini o i frame devono essere passati come :
+ 
+**float32 tensor of shape: 192x192x3. Channels order: RGB with values in [0, 255]**
+
+
+Calcolati i punti dovrei denormalizzarli e raccoglierli all'interno di u array che contenga solo x e y per ogni punto , quindi un vettore di vettori a 2-dimesioni
+
+Dovrei standarizzare la lunghezza dei video
+Adattare i video al formato richiesto da MoveNet
+Decidere quanti frames per video usare 
+Creare una funzione che li divida effettivamemnte
+
+Devo estrarre tutti i frame e poi dividere questi frame in sub-set da 45, in modo tale da avere più video
+Decidere se estrarre tutti i frame e poi dividerli, oppure creare delle subfolder contenenti 45 frame
+
+
+# Correggere pos
+
+Quando dovrò correggere la posizione posso usare il knn, calcolare gli angoli fare una media tra gli angoli e usare quella come riferimento.
+sta la funzione knn centroide.
+
+Al posto di vericare sempre la funzione potrei farlo ogni 30 sec o 45sec
+
+Non posso peò calcolare tutti gli angoli ma devo trovare quelli più discriminanti
+

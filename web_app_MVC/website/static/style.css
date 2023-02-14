@@ -1,0 +1,69 @@
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-size:medium;
+    font-weight: 400;
+}
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+}
+
+h4 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+}
+
+fieldset {
+    background-color:#9597ad;
+     max-width:500px;
+     padding:16px;
+     position: relative;
+}
+legend {
+    background-color: #808295; 
+    padding: 5px 5px;
+    width:150px
+}
+
+#countdown {
+    position: relative;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 150px;
+    width: 150px;
+    text-align: center;
+  }
+  
+  #timer {
+    display: inline-block;
+    line-height: 140px;
+  }
+  
+  svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    transform: rotateY(-180deg) rotateZ(-90deg);
+  }
+  
+  svg circle {
+    stroke-dasharray: 423px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+    stroke-width: 3px;
+    stroke: white;
+    fill: none;
+    animation: countdown 30s linear infinite forwards;
+  }
+  
+  @keyframes countdown {
+    from {
+      stroke-dashoffset: 0px;
+    }
+    to {
+      stroke-dashoffset: 424px;
+    }
+  }
