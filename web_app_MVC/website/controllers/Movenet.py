@@ -8,7 +8,7 @@ class Movenet:
     def __init__(self):
         
         # Initialize the TFLite interpreter
-        self.interpreter = tf.lite.Interpreter(model_path="D:\progetto_tesi\lite-model_movenet_singlepose_thunder_3.tflite")
+        self.interpreter = tf.lite.Interpreter(model_path="D:\\tesi\\notebook\lite-model_movenet_singlepose_thunder_3.tflite")
         self.interpreter.allocate_tensors()
         
     def movenet(self,input_image):

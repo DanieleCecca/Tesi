@@ -1,0 +1,21 @@
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ simple_rnn (SimpleRNN)      (None, 45, 64)            7424      
+                                                                 
+ simple_rnn_1 (SimpleRNN)    (None, 45, 128)           24704     
+                                                                 
+ simple_rnn_2 (SimpleRNN)    (None, 64)                12352     
+                                                                 
+ dense (Dense)               (None, 64)                4160      
+                                                                 
+ dense_1 (Dense)             (None, 32)                2080      
+                                                                 
+ dense_2 (Dense)             (None, 6)                 198       
+                                                                 
+=================================================================
+Total params: 50,918
+Trainable params: 50,918
+Non-trainable params: 0
+_________________________________________________________________

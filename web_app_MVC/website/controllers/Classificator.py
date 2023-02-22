@@ -5,7 +5,7 @@ import cv2
 class Classificator:
     
     # costruttore rnn
-    def __init__(self, model_rnn = "D:\progetto_tesi\model_RNN"):
+    def __init__(self, model_rnn = "D:\\tesi\\notebook\model_RNN"):
         
         self.model = tf.keras.models.load_model(model_rnn)
         self.classificazione=' '

@@ -8,12 +8,12 @@ import numpy as np
 class Checker:
     
     def __init__(self):
-        self.dataset_Cobra = np.load("D:\progetto_tesi\dataset_checker\dataset_Cobra.npy")
-        self.dataset_Corpse = np.load("D:\progetto_tesi\dataset_checker\dataset_Corpse.npy")
-        self.dataset_Lotus = np.load("D:\progetto_tesi\dataset_checker\dataset_Lotus.npy")
-        self.dataset_Mountain = np.load("D:\progetto_tesi\dataset_checker\dataset_Mountain.npy")
-        self.dataset_Tree = np.load("D:\progetto_tesi\dataset_checker\dataset_Tree.npy")
-        self.dataset_Triangle = np.load("D:\progetto_tesi\dataset_checker\dataset_Triangle.npy")
+        self.dataset_Cobra = np.load("D:\\tesi\\notebook\dataset_checker\dataset_Cobra.npy")
+        self.dataset_Corpse = np.load("D:\\tesi\\notebook\dataset_checker\dataset_Corpse.npy")
+        self.dataset_Lotus = np.load("D:\\tesi\\notebook\dataset_checker\dataset_Lotus.npy")
+        self.dataset_Mountain = np.load("D:\\tesi\\notebook\dataset_checker\dataset_Mountain.npy")
+        self.dataset_Tree = np.load("D:\\tesi\\notebook\dataset_checker\dataset_Tree.npy")
+        self.dataset_Triangle = np.load("D:\\tesi\\notebook\dataset_checker\dataset_Triangle.npy")
         self.correzione = ''   
     
     def calculate_angle(self,a,b,c):
