@@ -19,7 +19,8 @@ import ast
 import numpy as np
 
 movenet_model = Movenet()
-rnn_model = Classificator()
+#rnn_model = Classificator()
+rnn_model = Classificator()#svm in realtà
 checker = Checker()
 timer = Timer()
 videoStreaming= Blueprint('videoStreaming', __name__)
@@ -60,8 +61,11 @@ def gen_frames_free():
             sequence= sequence[-45:]
 
             if len(sequence)==45:
-                res = rnn_model.model.predict(np.expand_dims(sequence,axis=0))[0]
+                print(np.expand_dims(sequence,axis=0).shape)
+                res = rnn_model.model.predict_proba(np.expand_dims(sequence,axis=0).reshape(1,45*51))[0]#per modelli ml
+                #res = rnn_model.model.predict(np.expand_dims(sequence,axis=0))[0] per modelli deep
                 predictions.append(np.argmax(res))
+                print(res)
 
                 #scrivere su schermo la scritta
                 if np.unique(predictions[-10:])[0]==np.argmax(res):# controlla che le ultime 10 predizioni siano uguali

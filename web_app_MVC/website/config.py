@@ -1,15 +1,26 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+import os
+import sys
+from flask_ngrok import run_with_ngrok
+from pyngrok import ngrok
 
 db= SQLAlchemy()
 DB_NAME = "database.db"
+
+port_no =5000
 
 
 def create_app():
     
     #Inizializziamo un oggetto di tipo Flask
     app = Flask(__name__,template_folder='views')
+    
+    ngrok.set_auth_token("2MSD7Ew2kcpKaT3R1N0RtC11OF7_3v2pbuSEFJdCRJjzYWBqY")
+    public_url = ngrok.connect(port_no).public_url
+    print(public_url)
+
     
     
     #DATABASE Section

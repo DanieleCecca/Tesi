@@ -1,18 +1,24 @@
 from tensorflow import keras
 import tensorflow as tf
 import cv2
+import pickle
 
 class Classificator:
     
     # costruttore rnn
-    def __init__(self, model_rnn = "D:\\tesi\\notebook\model_RNN"):
+    #def __init__(self, model_rnn = "D:\\tesi\\notebook\model_RNN"):
         
-        self.model = tf.keras.models.load_model(model_rnn)
-        self.classificazione=' '
+     #   self.model = tf.keras.models.load_model(model_rnn)
+      #  self.classificazione=' '
         
     #TO DO decidere se riscrivere la funzione
     #def predict(params):
         #self.model.predict(params)
+        
+    # costruttore svm
+    def __init__(self, model_svm = "D:\\tesi\\notebook\\model_SVM\\my_model_svm.pickle"):        
+        self.model =  pickle.load(open(model_svm, "rb"))
+        self.classificazione=' '
         
     
     def prob_viz(self,res,actions,input_frame):
