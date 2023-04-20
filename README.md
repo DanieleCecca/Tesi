@@ -16,4 +16,4 @@ La repository si divide nel seguente modo:
 
 Per il momento è possibile ospitare il sito-web solamente localmente.
 
-Una volta scaricata la repository assicurarsi che siano installi tutti i framework e le librerire presenti nel file **requirements.txt**
+
